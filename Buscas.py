@@ -96,7 +96,7 @@ plt.show()
 df_resultados["Algoritmo_Caso"] = df_resultados["Algoritmo"] + " - " + df_resultados["Caso"]
 
 plt.figure(figsize=(12, 6))
-sns.barplot(
+ax = sns.barplot(
     data=df_resultados,
     x="Tamanho",
     y="Visitas",
@@ -105,6 +105,8 @@ sns.barplot(
     ci=None
 )
 
+for container in ax.containers:
+    ax.bar_label(container, fmt='%.0f', label_type='edge', fontsize=8)
 plt.xlabel("Tamanho da Entrada")
 plt.yscale("log")
 plt.ylabel("Quantidade de Visitas (Comparações)")
